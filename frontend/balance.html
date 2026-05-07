@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Balance | Holly's Blockchain Project</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.10.4/dist/web3.min.js"></script>
+    <script src="js/config.js"></script>
+</head>
+<body>
+
+<nav class="navbar">
+    <a class="nav-brand" href="index.html">Holly's Blockchain Project</a>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="wallet.html">Create Wallet</a>
+        <a href="balance.html" class="active">Check Balance</a>
+        <a href="purchase.html">Buy Tickets</a>
+        <a href="transfer.html">Return Tickets</a>
+    </div>
+</nav>
+
+<main class="main-content">
+    <div class="card">
+        <h1 class="page-title">Check Balance</h1>
+        <p class="page-subtitle">Pick your role to see the right view of the contract.</p>
+
+        <div class="tab-row">
+            <button class="tab-btn active" data-role="attendee" id="tabAttendee">Attendee</button>
+            <button class="tab-btn" data-role="doorman" id="tabDoorman">Doorman</button>
+            <button class="tab-btn" data-role="venue" id="tabVenue">Venue Operator</button>
+        </div>
+
+        <!-- Attendee tab -->
+        <div class="tab-panel active" id="panelAttendee">
+            <p style="font-size: 0.88rem; color: var(--text-muted); font-weight: 600; margin-bottom: 1.25rem;">
+                Connect your MetaMask to see your tickets and SETH balance.
+            </p>
+
+            <div id="attendeeConnectSection">
+                <button class="btn" id="connectBtnAttendee">Connect MetaMask</button>
+            </div>
+
+            <div id="attendeeBalanceSection" class="hidden">
+                <div style="margin-bottom: 1rem;">
+                    <p class="label">Connected Wallet</p>
+                    <div class="wallet-chip" id="attendeeAddress"></div>
+                </div>
+
+                <div class="balance-grid">
+                    <div class="balance-item">
+                        <div class="balance-label">SETH Balance</div>
+                        <div class="balance-value" id="attendeeSETH"></div>
+                        <div class="balance-unit">SETH</div>
+                    </div>
+                    <div class="balance-item">
+                        <div class="balance-label">Tickets Held</div>
+                        <div class="balance-value" id="attendeeTKT"></div>
+                        <div class="balance-unit">TKT</div>
+                    </div>
+                </div>
+
+                <div id="attendeeTicketMsg" class="status-box status-info" style="margin-top: 0.5rem;">
+                    <span id="attendeeTicketMsgText"></span>
+                </div>
+
+                <button class="btn btn-outline btn-sm" id="refreshAttendeeBtn" style="margin-top: 0.5rem;">Refresh</button>
+            </div>
+
+            <div id="attendeeStatusBox" class="status-box hidden">
+                <span id="attendeeStatusMsg"></span>
+            </div>
+        </div>
+
+        <!-- Doorman tab -->
+        <div class="tab-panel" id="panelDoorman">
+            <p style="font-size: 0.88rem; color: var(--text-muted); font-weight: 600; margin-bottom: 1.25rem;">
+                Enter any wallet address to check if they hold a valid ticket. No wallet needed.
+            </p>
+
+            <div class="form-group">
+                <label class="label" for="doormanAddressInput">Attendee Wallet Address</label>
+                <input class="input" type="text" id="doormanAddressInput" placeholder="0x...">
+            </div>
+
+            <button class="btn" id="checkDoormanBtn">Check Validity</button>
+
+            <div id="validityDisplay" class="hidden" style="margin-top: 1rem;">
+                <div class="validity-display" id="validityBox">
+                    <span class="validity-icon" id="validityIcon"></span>
+                    <div class="validity-text" id="validityText"></div>
+                    <div class="validity-addr" id="validityAddr"></div>
+                </div>
+            </div>
+
+            <div id="doormanStatusBox" class="status-box hidden">
+                <span id="doormanStatusMsg"></span>
+            </div>
+        </div>
+
+        <!-- Venue Operator tab -->
+        <div class="tab-panel" id="panelVenue">
+            <p style="font-size: 0.88rem; color: var(--text-muted); font-weight: 600; margin-bottom: 1.25rem;">
+                Live stats for the event, pulled straight from the contract.
+            </p>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value" id="statSold"></div>
+                    <div class="stat-label">Tickets Sold</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="statAvailable"></div>
+                    <div class="stat-label">Still Available</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="statETH"></div>
+                    <div class="stat-label">SETH Collected</div>
+                </div>
+            </div>
+
+            <button class="btn btn-lavender btn-sm" id="refreshVenueBtn" style="margin-top: 0.5rem;">Refresh Stats</button>
+
+            <div id="venueStatusBox" class="status-box hidden">
+                <span id="venueStatusMsg"></span>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+<script src="js/balance.js"></script>
+
+<div class="cat-layer">
+    <img src="img/catgif.gif"  alt="" style="bottom: 0; left: 0;    width: 115px;">
+    <img src="img/cat2.png"   alt="" style="bottom: 0; left: 42%;  width: 105px;">
+    <img src="img/cat4.png"   alt="" style="bottom: -1%; right: -0.2%;   width: 108px;">
+</div>
+
+</body>
+</html>

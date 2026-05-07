@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Wallet | Holly's Blockchain Project</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.10.4/dist/web3.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar">
+    <a class="nav-brand" href="index.html">Holly's Blockchain Project</a>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="wallet.html" class="active">Create Wallet</a>
+        <a href="balance.html">Check Balance</a>
+        <a href="purchase.html">Buy Tickets</a>
+        <a href="transfer.html">Return Tickets</a>
+    </div>
+</nav>
+
+<main class="main-content">
+    <div class="card">
+        <h1 class="page-title">Create Wallet</h1>
+        <p class="page-subtitle">Generate a new Ethereum wallet. Keep your private key secret.</p>
+
+        <div class="form-group">
+            <label class="label" for="passwordInput">Keystore Password</label>
+            <input class="input" type="password" id="passwordInput" placeholder="Choose a strong password">
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.4rem; font-weight: 600;">Used to encrypt your keystore. You will need it to import the wallet later.</p>
+        </div>
+
+        <div class="btn-row">
+            <button class="btn" id="generateBtn">Generate Wallet</button>
+        </div>
+
+        <div id="statusBox" class="status-box status-error hidden">
+            <span id="statusMsg"></span>
+        </div>
+
+        <div id="walletDetails" class="hidden">
+            <hr class="divider">
+
+            <div class="warning-box">
+                <strong>Security Warning:</strong> Never share your private key or keystore password with anyone. Anyone who has these can drain your wallet instantly. Write them down somewhere offline and keep them safe.
+            </div>
+
+            <div class="form-group">
+                <label class="label" for="addressOutput">Wallet Address (Your Public Identity)</label>
+                <textarea class="data-box" id="addressOutput" rows="2" readonly></textarea>
+            </div>
+
+            <div class="form-group">
+                <label class="label" for="privateKeyOutput">Private Key (Keep This Secret)</label>
+                <textarea class="data-box" id="privateKeyOutput" rows="2" readonly></textarea>
+            </div>
+
+            <div class="form-group">
+                <label class="label" for="keystoreOutput">Keystore File Contents (Password Encrypted)</label>
+                <textarea class="data-box" id="keystoreOutput" rows="6" readonly></textarea>
+            </div>
+
+            <div class="btn-row">
+                <button class="btn btn-lavender" id="downloadBtn">Download Keystore</button>
+                <button class="btn btn-outline btn-sm" id="copyAddressBtn">Copy Address</button>
+            </div>
+
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.9rem; font-weight: 600;">
+                Next: grab free Sepolia ETH at <strong>sepoliafaucet.com</strong> using your new address.
+            </p>
+        </div>
+
+    </div>
+</main>
+
+<script src="js/wallet.js"></script>
+
+<div class="cat-layer">
+    <img src="img/cat1.png"   alt="" style="top: 80px; left: 0;    width: 118px;">
+    <img src="img/cat3.png"   alt="" style="bottom: 0; left: 35%;  width: 125px;">
+    <img src="img/catgif2.gif" alt="" style="bottom: 10%; right: 10%; width: 108px;">
+</div>
+
+</body>
+</html>

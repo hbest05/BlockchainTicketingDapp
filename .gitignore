@@ -1,0 +1,9 @@
+node_modules/
+.env
+artifacts/
+cache/
+coverage/
+coverage.json
+typechain-types/
+chat_export.txt
+MY-TODO.md

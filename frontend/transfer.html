@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Return Tickets | Holly's Blockchain Project</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.10.4/dist/web3.min.js"></script>
+    <script src="js/config.js"></script>
+</head>
+<body>
+
+<nav class="navbar">
+    <a class="nav-brand" href="index.html">Holly's Blockchain Project</a>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="wallet.html">Create Wallet</a>
+        <a href="balance.html">Check Balance</a>
+        <a href="purchase.html">Buy Tickets</a>
+        <a href="transfer.html" class="active">Return Tickets</a>
+    </div>
+</nav>
+
+<main class="main-content">
+    <div class="card">
+        <h1 class="page-title">Return Tickets</h1>
+        <p class="page-subtitle">Send your tickets back to the venue and get a full SETH refund.</p>
+
+        <div id="connectSection">
+            <p style="font-size: 0.88rem; color: var(--text-muted); font-weight: 600; margin-bottom: 1rem;">
+                Connect the wallet that holds the tickets you want to return.
+            </p>
+            <button class="btn" id="connectBtn">Connect MetaMask</button>
+        </div>
+
+        <div id="returnSection" class="hidden">
+
+            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem;">
+                <p class="label" style="margin: 0;">Connected:</p>
+                <div class="wallet-chip" id="connectedAddress"></div>
+            </div>
+
+            <div class="balance-grid" style="margin-bottom: 1.25rem;">
+                <div class="balance-item">
+                    <div class="balance-label">Current Tickets</div>
+                    <div class="balance-value" id="currentTKT"></div>
+                    <div class="balance-unit">TKT</div>
+                </div>
+                <div class="balance-item">
+                    <div class="balance-label">SETH Balance</div>
+                    <div class="balance-value" id="currentSETH"></div>
+                    <div class="balance-unit">SETH</div>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="form-group">
+                <label class="label" for="returnAmountInput">How Many Tickets to Return?</label>
+                <input class="input" type="number" id="returnAmountInput" min="1" placeholder="1" value="1">
+            </div>
+
+            <div class="cost-preview" id="refundPreview">
+                <div style="font-size: 0.85rem;">You Will Receive</div>
+                <div class="cost-total" id="refundAmountDisplay">0.01 SETH</div>
+                <div style="font-size: 0.78rem; margin-top: 0.2rem; opacity: 0.75;">Goes straight back to your connected wallet.</div>
+            </div>
+
+            <div class="btn-row">
+                <button class="btn btn-lavender" id="returnBtn">Return Tickets</button>
+                <button class="btn btn-outline btn-sm" id="refreshBtn">Refresh Balance</button>
+            </div>
+
+        </div>
+
+        <div id="statusBox" class="status-box hidden">
+            <span id="statusMsg"></span>
+        </div>
+
+        <div id="txResult" class="tx-result hidden"></div>
+
+    </div>
+</main>
+
+<script src="js/transfer.js"></script>
+
+<div class="cat-layer">
+    <img src="img/cat1.png"   alt="" style="top: 80px; left: 0;    width: 118px;">
+    <img src="img/catgif3.gif" alt="" style="bottom: 0; left: 10%;  width: 108px;">
+    <img src="img/cat2.png"   alt="" style="bottom: 0; right: 40%; width: 105px;">
+    <img src="img/cat4.png"   alt="" style="bottom: 0; right: 0;   width: 108px;">
+</div>
+
+</body>
+</html>
