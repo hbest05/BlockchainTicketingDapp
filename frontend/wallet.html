@@ -69,11 +69,51 @@
             </div>
 
             <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.9rem; font-weight: 600;">
-                Next: grab free Sepolia ETH at <strong>sepoliafaucet.com</strong> using your new address.
+                Next: grab free Sepolia ETH at <a href="https://sepolia-faucet.pk910.de/" target="_blank" style="color: var(--plum);">sepolia-faucet.pk910.de</a> using your new address.
             </p>
         </div>
 
     </div>
+<!-- 
+    <div class="card" style="margin-top: 1.5rem;">
+        <h2 class="page-title" style="font-size: 1.3rem;">Recover Private Key from Keystore</h2>
+        <p class="page-subtitle" style="font-size: 0.88rem;">Already have a keystore file? Paste it here along with your password to recover the private key.</p>
+
+        <div class="form-group">
+            <label class="label" for="recoverKeystoreInput">Keystore JSON</label>
+            <textarea class="input" id="recoverKeystoreInput" rows="5" placeholder='Paste the contents of your .json keystore file here'></textarea>
+        </div>
+
+        <div class="form-group">
+            <label class="label" for="recoverPasswordInput">Keystore Password</label>
+            <input class="input" type="password" id="recoverPasswordInput" placeholder="The password you used when creating the wallet">
+        </div>
+
+        <div class="btn-row">
+            <button class="btn btn-lavender" id="recoverBtn">Recover Private Key</button>
+        </div>
+
+        <div id="recoverStatusBox" class="status-box hidden">
+            <span id="recoverStatusMsg"></span>
+        </div>
+
+        <div id="recoverResult" class="hidden">
+            <hr class="divider">
+            <div class="warning-box">
+                <strong>Keep this secret.</strong> Copy it now, then close this page. Never paste it anywhere except MetaMask's "Import Account" box.
+            </div>
+            <div class="form-group">
+                <label class="label">Recovered Address</label>
+                <textarea class="data-box" id="recoverAddressOutput" rows="2" readonly></textarea>
+            </div>
+            <div class="form-group">
+                <label class="label">Recovered Private Key</label>
+                <textarea class="data-box" id="recoverPrivKeyOutput" rows="2" readonly></textarea>
+            </div>
+            <button class="btn btn-outline btn-sm" id="copyRecoveredKeyBtn">Copy Private Key</button>
+        </div>
+    </div> -->
+
 </main>
 
 <script src="js/wallet.js"></script>

@@ -1,4 +1,7 @@
+//deployed through remix :)
+
 // SPDX-License-Identifier: MIT
+
 pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
@@ -38,7 +41,7 @@ contract TicketToken is ERC20, Ownable, ReentrancyGuard {
         return 0;
     }
 
-    //lets anyone buy `amount` tickets by sending exactly ticketPrice * amount SETH
+    //lets anyone buy 'amount' tickets by sending exactly ticketPrice * amount SETH
     //nonReentrant blocks attackers from re-entering before state updates finish
     function buyTickets(uint256 amount) external payable nonReentrant {
         require(amount > 0, "must buy at least one ticket");

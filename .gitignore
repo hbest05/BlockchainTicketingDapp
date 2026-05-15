@@ -5,5 +5,5 @@ cache/
 coverage/
 coverage.json
 typechain-types/
-chat_export.txt
+chat_log.txt
 MY-TODO.md

@@ -139,7 +139,7 @@ async function loadAttendeeBalances() {
             msgEl.textContent = "You don't hold any tickets yet. Head to Buy Tickets to get some.";
             msgBox.className = "status-box status-warn";
         } else if (ticketCount === 1) {
-            msgEl.textContent = "You own 1 ticket. See you at the event!";
+            msgEl.textContent = "You own 1 ticket. See you at the cat function!";
             msgBox.className = "status-box status-success";
         } else {
             msgEl.textContent = "You own " + ticketCount + " tickets.";

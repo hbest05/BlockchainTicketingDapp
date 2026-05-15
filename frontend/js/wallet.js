@@ -74,6 +74,60 @@ document.getElementById("downloadBtn").addEventListener("click", function () {
     URL.revokeObjectURL(url);
 });
 
+//recover section: decrypt an existing keystore file to get the private key back
+document.getElementById("recoverBtn").addEventListener("click", function () {
+    const recoverStatus = document.getElementById("recoverStatusBox");
+    const recoverMsg = document.getElementById("recoverStatusMsg");
+
+    function showRecoverStatus(msg, type) {
+        recoverStatus.className = "status-box status-" + type;
+        recoverMsg.textContent = msg;
+        recoverStatus.classList.remove("hidden");
+    }
+
+    document.getElementById("recoverResult").classList.add("hidden");
+    recoverStatus.classList.add("hidden");
+
+    const raw = document.getElementById("recoverKeystoreInput").value.trim();
+    const pass = document.getElementById("recoverPasswordInput").value;
+
+    if (!raw) { showRecoverStatus("Paste your keystore JSON first.", "error"); return; }
+    if (!pass) { showRecoverStatus("Enter the password you used when creating this wallet.", "error"); return; }
+
+    let parsed;
+    try {
+        parsed = JSON.parse(raw);
+    } catch (e) {
+        showRecoverStatus("That does not look like valid JSON. Make sure you pasted the full keystore file contents.", "error");
+        return;
+    }
+
+    try {
+        const web3 = new Web3();
+        //decrypt blocks the thread for a second — that is normal, it is doing key derivation
+        const account = web3.eth.accounts.decrypt(parsed, pass);
+        document.getElementById("recoverAddressOutput").value = account.address;
+        document.getElementById("recoverPrivKeyOutput").value = account.privateKey;
+        document.getElementById("recoverResult").classList.remove("hidden");
+        showRecoverStatus("Private key recovered. Copy it and import it into MetaMask.", "success");
+    } catch (err) {
+        showRecoverStatus("Decryption failed. Check your password is correct and try again.", "error");
+    }
+});
+
+document.getElementById("copyRecoveredKeyBtn").addEventListener("click", function () {
+    const key = document.getElementById("recoverPrivKeyOutput").value;
+    if (!key) return;
+    navigator.clipboard.writeText(key).then(function () {
+        const btn = document.getElementById("copyRecoveredKeyBtn");
+        const original = btn.textContent;
+        btn.textContent = "Copied!";
+        setTimeout(function () { btn.textContent = original; }, 1500);
+    }).catch(function () {
+        document.getElementById("recoverStatusMsg").textContent = "Clipboard blocked. Copy the key manually from the box above.";
+    });
+});
+
 //copy the wallet address to clipboard with a temporary confirmation message
 document.getElementById("copyAddressBtn").addEventListener("click", function () {
     const address = document.getElementById("addressOutput").value;
